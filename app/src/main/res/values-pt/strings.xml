@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Caveira iluminada</string>
+    <string name="title_activity_dashboard">Caveira iluminada</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_flash">Caveira LED</string>
+    <string name="title_activity_screen">Caveira como Lanterna</string>
+    <string name="title_activity_color_screen">+ Caveiras</string>
+    <string name="title_activity_donation">Doação</string>
+    <string name="title_activity_color_dashboard">Escolha a Caveira</string>
+
+    <string name="flashlight">Lanterna</string>
+    <string name="donationText">Os desenvolvedores desse app amam suco de maracujá e de laranja. Se você gostou desse aplicativo sinta-se livre para nos pagar um suco :)</string>
+    <string name="screen">Caveira Iluminada</string>
+    <string name="moreSkull">+ Caveiras</string>
+    <string name="payjuice">Pague 1 suco</string>
+
+    <string name="donate1">Doe R$04,00</string>
+    <string name="donate2">Doe R$20,00</string>
+    <string name="donate3">Doe R$80,00</string>
+
+    <string name="chooseSkull">Escolha sua caveira!</string>
+
+    <string name="givePermission">Precisa Dar Permissão ao app</string>
+</resources>

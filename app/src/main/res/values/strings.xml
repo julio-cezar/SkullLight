@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Skull Light</string>
+    <string name="title_activity_dashboard">Skull light</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_flash">LED Skull</string>
+    <string name="title_activity_screen">Skull Light</string>
+    <string name="title_activity_color_screen">More Skull</string>
+    <string name="title_activity_donation">Donation</string>
+    <string name="title_activity_color_dashboard">Choose the skull</string>
+
+    <string name="flashlight">Flashlight</string>
+    <string name="donationText">The developers of this app love orange and passion fruit juice, if you liked this app feel free to pay us a juice:)</string>
+    <string name="screen">Skull light</string>
+    <string name="moreSkull">More Skulls</string>
+    <string name="payjuice">Pay me juice</string>
+
+    <string name="donate1">Donate about 1 dollar</string>
+    <string name="donate2">Donate about 5 dollar</string>
+    <string name="donate3">Donate about 20 dollar</string>
+    <string name="colorclick">Just Click on the Screen :)</string>
+
+    <string name="chooseSkull">Choose a Skull!</string>
+
+    <string name="givePermission">you need to allow permission</string>
+</resources>
