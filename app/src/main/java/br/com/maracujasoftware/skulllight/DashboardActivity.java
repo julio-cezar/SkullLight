@@ -9,8 +9,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class DashboardActivity extends AppCompatActivity {
+import com.appjolt.sdk.Appjolt;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
+public class DashboardActivity extends AppCompatActivity {
+    private AdView adView_1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,23 @@ public class DashboardActivity extends AppCompatActivity {
                     14);
 
         }
+
+        adView_1 = (AdView)this.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("F0777154C5F794B0B7A1EF4120502169")
+                .build();
+        adView_1.loadAd(adRequest);
+
+        /* Appjolt - Show EULA only in Google Play Installs (and Debug mode) */
+        /* Please make sure this is added to the Activity onCreate and not Application like the init() method. */
+        if (Appjolt.isGooglePlayInstall(this))
+        {
+            Appjolt.showEULA(this);
+        }
+
+        Appjolt.addUserSegment(this, "Buyer");
+
 
     }
 
@@ -49,6 +70,26 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
         }
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        adView_1.resume();
+    }
+
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        adView_1.pause();
+    }
+
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        adView_1.destroy();
     }
 
 

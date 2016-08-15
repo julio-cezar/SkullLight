@@ -39,6 +39,11 @@
         android:layout_height="wrap_content"
         android:text="@string/donate3"
         android:onClick="doar" />
+
+  <!--  <Button
+        android:id="@+id/bt_testecamera"
+        style="@style/style_botoes"
+        android:onClick="testeCam" />-->
     <FrameLayout
         android:id="@+id/propaganda"
         android:layout_width="fill_parent"
@@ -47,13 +52,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true">
 
-       <!-- <com.google.android.gms.ads.AdView
+       <com.google.android.gms.ads.AdView
             android:id="@+id/adViewDonation"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-7040951679419231/6423131103"/>-->
-
+            ads:adUnitId="ca-app-pub-7040951679419231/6423131103"/>
 
     </FrameLayout>
 </LinearLayout>

@@ -31,12 +31,12 @@
         android:layout_alignParentRight="true"
         android:background="#000000">
 
-       <!-- <com.google.android.gms.ads.AdView
+        <com.google.android.gms.ads.AdView
             android:id="@+id/adViewFlashlight"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-7040951679419231/4946397900"/>-->
+            ads:adUnitId="ca-app-pub-7040951679419231/4946397900"/>
 
 
     </FrameLayout>

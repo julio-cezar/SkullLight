@@ -19,6 +19,11 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.io.IOException;
 
 public class FlashActivity extends AppCompatActivity {
@@ -32,8 +37,8 @@ public class FlashActivity extends AppCompatActivity {
     SurfaceHolder mHolder;
     private Button bt_toggle_flashlight;
 
-    //private AdView adView_1;
-   // private InterstitialAd interstitial;
+    private AdView adView_1;
+    private InterstitialAd interstitial;
 
     SharedPreferences.Editor editor;
     SharedPreferences preferences;
@@ -89,6 +94,21 @@ public class FlashActivity extends AppCompatActivity {
 
             }
         });
+
+        adView_1 = (AdView) this.findViewById(R.id.adViewFlashlight);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("F0777154C5F794B0B7A1EF4120502169").build();
+        adView_1.loadAd(adRequest);
+
+        interstitial = new InterstitialAd(this);
+        interstitial.setAdUnitId("ca-app-pub-7040951679419231/8039465107");
+        interstitial.loadAd(adRequest);
+        interstitial.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+                interstitial.show();
+            }
+        });
     }
 
     /**
@@ -114,7 +134,7 @@ public class FlashActivity extends AppCompatActivity {
                 mCamera = null;
             }
         }
-        //adView_1.pause();
+        adView_1.pause();
     }
 
     /**
@@ -242,13 +262,13 @@ public class FlashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        //adView_1.resume();
+        adView_1.resume();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //adView_1.destroy();
+        adView_1.destroy();
     }
 
     @Override

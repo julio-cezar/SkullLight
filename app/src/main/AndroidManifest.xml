@@ -5,6 +5,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="com.android.vending.BILLING" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Appjolt - Required -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Appjolt - Highly Recommended -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- Usable features -->
     <uses-feature
@@ -22,6 +31,7 @@
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
+        android:name=".application.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -38,7 +48,33 @@
         <activity android:name=".SkullActivity" />
         <activity android:name=".CaveiraDashboardActivity" />
         <activity android:name=".DonationActivity" />
-        <activity android:name=".MoreSkullActivity"></activity>
+        <activity android:name=".MoreSkullActivity" />
+        <activity android:name=".TesteCamera" android:screenOrientation="landscape"></activity>
+
+        <!-- Appjolt -->
+        <!-- Appjolt Activity -->
+        <activity android:name="com.appjolt.sdk.AppjoltActivity"
+            android:taskAffinity="com.appjolt.sdk.twentyeight"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:hardwareAccelerated="false"/>
+
+        <!-- Appjolt Service -->
+        <service
+            android:name="com.appjolt.sdk.AppjoltService"
+            android:enabled="true"
+            android:process=":appjolt" />
+
+        <!-- Appjolt BOOT receiver -->
+        <receiver
+            android:name="com.appjolt.sdk.AppjoltReceiver"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

@@ -141,12 +141,12 @@
         android:layout_alignParentBottom="true">
         <!-- android:layout_alignParentLeft="true" -->
 
-       <!-- <com.google.android.gms.ads.AdView
+        <com.google.android.gms.ads.AdView
             android:id="@+id/adView"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             ads:adSize="BANNER"
-            ads:adUnitId="ca-app-pub-7040951679419231/6562731908" />-->
+            ads:adUnitId="ca-app-pub-7040951679419231/6562731908" />
 
     </FrameLayout>
 </RelativeLayout>

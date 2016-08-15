@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "461984769575",
+    "firebase_url": "https://skull-light.firebaseio.com",
+    "project_id": "skull-light",
+    "storage_bucket": "skull-light.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461984769575:android:2c24f23784418dd5",
+        "android_client_info": {
+          "package_name": "br.com.maracujasoftware.skulllight"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461984769575-71lgh0g3niqslh74jlgpokid9du4p82a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-Rw2BonEBOdLM7Ay44MKBKJ7dcUQY4vI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
