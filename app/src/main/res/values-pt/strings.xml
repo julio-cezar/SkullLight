@@ -8,10 +8,10 @@
     <string name="title_activity_donation">Doação</string>
     <string name="title_activity_color_dashboard">Escolha a Caveira</string>
 
-    <string name="flashlight">Lanterna</string>
+    <string name="flashlight">Light</string>
     <string name="donationText">Os desenvolvedores desse app amam suco de maracujá e de laranja. Se você gostou desse aplicativo sinta-se livre para nos pagar um suco :)</string>
-    <string name="screen">Caveira Iluminada</string>
-    <string name="moreSkull">+ Caveiras</string>
+    <string name="pranks">Pegadinhas :)</string>
+    <string name="skullCamera">Camera Caveira</string>
     <string name="payjuice">Pague 1 suco</string>
 
     <string name="donate1">Doe R$04,00</string>
@@ -21,4 +21,16 @@
     <string name="chooseSkull">Escolha sua caveira!</string>
 
     <string name="givePermission">Precisa Dar Permissão ao app</string>
+
+    <string name="moreSkull">+ Caveiras</string>
+
+    <string name="prankDescription">1.Escolha um som, 2.Defina um tempo para ele começar a tocar, 3.Coloque seu aparelho perto de um amigo destraido e assuste ele :)</string>
+
+    <string name="setFearAlarm">definir Alarme do Susto</string>
+
+    <string name="cancelFearAlarm">Cancelar Alarme do Susto</string>
+
+
+
+
 </resources>

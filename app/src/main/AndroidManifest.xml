@@ -45,18 +45,20 @@
             </intent-filter>
         </activity>
         <activity android:name=".FlashActivity" />
-        <activity android:name=".SkullActivity" />
         <activity android:name=".CaveiraDashboardActivity" />
         <activity android:name=".DonationActivity" />
         <activity android:name=".MoreSkullActivity" />
-        <activity android:name=".TesteCamera" android:screenOrientation="landscape"></activity>
+        <activity
+            android:name=".TesteCamera"
+            android:screenOrientation="landscape" />
 
         <!-- Appjolt -->
         <!-- Appjolt Activity -->
-        <activity android:name="com.appjolt.sdk.AppjoltActivity"
-            android:taskAffinity="com.appjolt.sdk.twentyeight"
+        <activity
+            android:name="com.appjolt.sdk.AppjoltActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:hardwareAccelerated="false"/>
+            android:hardwareAccelerated="false"
+            android:taskAffinity="com.appjolt.sdk.twentyeight" />
 
         <!-- Appjolt Service -->
         <service
@@ -69,12 +71,16 @@
             android:name="com.appjolt.sdk.AppjoltReceiver"
             android:enabled="true"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".PrankActivity" />
+        <activity android:name=".SkullCamera"></activity>
+
+        <service android:enabled="true" android:name=".ServiceTimer"/>
     </application>
 
 </manifest>

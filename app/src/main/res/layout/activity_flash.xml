@@ -14,13 +14,24 @@
         android:id="@+id/Spreview"
         />
 
+
+       <Button
+           android:id="@+id/bt_caveira_dashboard_activity"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:text="@string/moreSkull"
+           android:onClick="callMoreSkull" />
+
     <Button
         android:id="@+id/bt_toggle_flashlight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/propaganda"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/caveira_apagada" />
+        android:background="@drawable/caveira_apagada"
+        android:layout_below="@+id/bt_caveira_dashboard_activity" />
+
 
     <FrameLayout
         android:id="@+id/propaganda"

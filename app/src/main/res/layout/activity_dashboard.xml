@@ -68,14 +68,14 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/bt_screen"
+                        android:id="@+id/bt_call_skullcamera"
                         style="@style/style_botoes"
                         android:background="@drawable/seletor_caveira2"
                         android:onClick="selecionarOpcao" />
 
                     <TextView
                         style="@style/style_text_botoes"
-                        android:text="@string/screen" />
+                        android:text="@string/skullCamera" />
 
                 </LinearLayout>
 
@@ -95,14 +95,14 @@
                     android:layout_height="wrap_content">
 
                     <Button
-                        android:id="@+id/bt_more"
+                        android:id="@+id/bt_call_prank"
                         style="@style/style_botoes"
                         android:background="@drawable/seletor_caveira3"
                         android:onClick="selecionarOpcao" />
 
                     <TextView
                         style="@style/style_text_botoes"
-                        android:text="@string/moreSkull" />
+                        android:text="@string/pranks"/>
 
                 </LinearLayout>
 

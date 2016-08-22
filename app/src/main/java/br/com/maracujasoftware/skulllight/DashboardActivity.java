@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.appjolt.sdk.Appjolt;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
@@ -40,12 +39,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         /* Appjolt - Show EULA only in Google Play Installs (and Debug mode) */
         /* Please make sure this is added to the Activity onCreate and not Application like the init() method. */
-        if (Appjolt.isGooglePlayInstall(this))
+       /* if (Appjolt.isGooglePlayInstall(this))
         {
             Appjolt.showEULA(this);
         }
 
-        Appjolt.addUserSegment(this, "Buyer");
+        Appjolt.addUserSegment(this, "Buyer");*/
 
 
     }
@@ -57,12 +56,12 @@ public class DashboardActivity extends AppCompatActivity {
                 i = new Intent(DashboardActivity.this, FlashActivity.class);
                 startActivity(i);
                 break;
-            case R.id.bt_screen:
-                i = new Intent(DashboardActivity.this, SkullActivity.class);
+            case R.id.bt_call_skullcamera:
+                i = new Intent(DashboardActivity.this, SkullCamera.class);
                 startActivity(i);
                 break;
-            case R.id.bt_more:
-                i = new Intent(DashboardActivity.this, CaveiraDashboardActivity.class);
+            case R.id.bt_call_prank:
+                i = new Intent(DashboardActivity.this, PrankActivity.class);
                 startActivity(i);
                 break;
             case R.id.bt_doacao:

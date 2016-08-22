@@ -60,7 +60,7 @@ public class CaveiraDashboardActivity extends AppCompatActivity {
     protected void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
-        interstitial.show();
+        //interstitial.show();
     }
 
     @Override

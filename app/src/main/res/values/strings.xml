@@ -8,10 +8,10 @@
     <string name="title_activity_donation">Donation</string>
     <string name="title_activity_color_dashboard">Choose the skull</string>
 
-    <string name="flashlight">Flashlight</string>
+    <string name="flashlight">Light</string>
     <string name="donationText">The developers of this app love orange and passion fruit juice, if you liked this app feel free to pay us a juice:)</string>
-    <string name="screen">Skull light</string>
-    <string name="moreSkull">More Skulls</string>
+    <string name="pranks">Pranks</string>
+    <string name="skullCamera">Skull Camera</string>
     <string name="payjuice">Pay me juice</string>
 
     <string name="donate1">Donate about 1 dollar</string>
@@ -22,4 +22,28 @@
     <string name="chooseSkull">Choose a Skull!</string>
 
     <string name="givePermission">you need to allow permission</string>
+
+    <string name="moreSkull">+ Skulls</string>
+
+    <string-array name="sounds_array">
+        <item>horror zombie</item>
+        <item>mad laugh</item>
+        <item>cruel laugh</item>
+    </string-array>
+
+    <string name="prankDescription">1.Choose a sound, 2.Choose a time for it start to play, 3.Put your device near a distracted friend and scare  him :)</string>
+
+    <string-array name="times_array">
+        <item>1 Minute</item>
+        <item>3 Minutes</item>
+        <item>5 Minutes</item>
+        <item>10 Minutes</item>
+    </string-array>
+
+
+    <string name="setFearAlarm">Set Fear Alarm</string>
+    <string name="cancelFearAlarm">Cancel Fear Alarm</string>
+
+
+
 </resources>

@@ -2,9 +2,12 @@ package br.com.maracujasoftware.skulllight;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
+import android.media.MediaPlayer;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -42,6 +45,8 @@ public class FlashActivity extends AppCompatActivity {
 
     SharedPreferences.Editor editor;
     SharedPreferences preferences;
+
+    MediaPlayer soundStart,laughSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +86,14 @@ public class FlashActivity extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(FlashActivity.this,
                         Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(FlashActivity.this,
-                            new String[] { Manifest.permission.CAMERA }, 14);
+                            new String[]{Manifest.permission.CAMERA}, 14);
 
                 } else {
+                    playLaughSound();
                     toggleFlashLight();
                 }
                 // Turn off the cam if it is on
-				/*
+                /*
 				 * turnOffFlashLight(); if (mCamera != null) {
 				 * mCamera.release(); mCamera = null; }
 				 */
@@ -106,7 +112,7 @@ public class FlashActivity extends AppCompatActivity {
         interstitial.loadAd(adRequest);
         interstitial.setAdListener(new AdListener() {
             public void onAdLoaded() {
-                interstitial.show();
+               // interstitial.show();
             }
         });
     }
@@ -298,5 +304,52 @@ public class FlashActivity extends AppCompatActivity {
             // other 'case' lines to check for other
             // permissions this app might request
         }
+    }
+
+    public void callMoreSkull(View view) {
+        Intent i;
+        i = new Intent(FlashActivity.this, CaveiraDashboardActivity.class);
+        startActivity(i);
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                soundStart = MediaPlayer.create(FlashActivity.this, R.raw.horror_zombie);
+                soundStart.start();
+            }
+        }, 2000);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (soundStart != null) {
+                soundStart.release();
+
+        }
+        if (laughSound != null) {
+            if (laughSound.isPlaying()) {
+                laughSound.release();
+            }
+        }
+    }
+
+    private void playLaughSound() {
+        laughSound = MediaPlayer.create(this, R.raw.cruel_laugh);
+        laughSound.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
