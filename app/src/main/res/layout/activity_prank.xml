@@ -50,4 +50,25 @@
         android:id="@+id/tvTime"
         android:textSize="60sp"
         android:layout_gravity="center_horizontal"/>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        android:onClick="startService" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:onClick="stopService" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Count"
+        android:onClick="getTimeLeft" />
 </LinearLayout>

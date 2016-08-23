@@ -2,15 +2,20 @@ package br.com.maracujasoftware.skulllight;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.IBinder;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,16 +26,16 @@ import android.widget.ToggleButton;
 
 import java.util.concurrent.TimeUnit;
 
-public class PrankActivity extends AppCompatActivity {
+public class PrankActivity extends AppCompatActivity implements ServiceConnection {
     String selectedSound = "horror zombie";
     String selectedTime = "1 Minute";
     MediaPlayer mpSound;
     TextView tvTime;
-    CounterClass timer;
-
     int alarmSound;
+    BroadcastReceiver receiver;
 
-
+    TimeLeftListener mTimeLeftListener;
+    private ServiceConnection connection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,31 +86,14 @@ public class PrankActivity extends AppCompatActivity {
 
         tvTime = (TextView) findViewById(R.id.tvTime);
 
-    }
+         receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String t = intent.getStringExtra(ServiceTimer.SKULL_TIMER_MESSAGE);
+                tvTime.setText(t);
+            }
+        };
 
-    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
-    @SuppressLint("NewApi")
-    public class CounterClass extends CountDownTimer {
-
-        public CounterClass(long millisInFuture, long countDownInterval) {
-            super(millisInFuture, countDownInterval);
-        }
-
-        @Override
-        public void onTick(long millisUntilFinished) {
-            long millis = millisUntilFinished;
-            String hms = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(millis), TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis)),
-                    TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis)));
-            tvTime.setText(hms);
-        }
-
-        @Override
-        public void onFinish() {
-            mpSound = MediaPlayer.create(PrankActivity.this, alarmSound);
-            mpSound.start();
-            tvTime.setText("");
-
-        }
     }
 
     public void playSound(View v) {
@@ -149,41 +137,53 @@ public class PrankActivity extends AppCompatActivity {
                     break;
             }
 
+            Intent it;
+
             switch (selectedTime) {
                 case "1 Minute":
-                    //Toast.makeText(PrankActivity.this, "1", Toast.LENGTH_SHORT).show();
-                    if(timer!=null) timer.cancel();
-                    timer = new CounterClass(60000, 1000);
-                    timer.start();
+                    if(connection == null) {
+                        connection = this;
+                        bindService(new Intent(this, ServiceTimer.class), connection, Context.BIND_AUTO_CREATE); // Context.BIND_AUTO_CREATE
+                        it = new Intent(this, ServiceTimer.class);
+                        it.putExtra("mMillisInFuture",60000);
+                        it.putExtra("mAlarmSound", alarmSound);
+                        startService(it);
+                    }
+
                     break;
                 case "3 Minutes":
-                   // Toast.makeText(PrankActivity.this, "3", Toast.LENGTH_SHORT).show();
-                    if(timer!=null) timer.cancel();
-                    timer = new CounterClass(180000, 1000);
-                    timer.start();
+                    it = new Intent(this, ServiceTimer.class);
+                    it.putExtra("mMillisInFuture",180000);
+                    it.putExtra("mAlarmSound", alarmSound);
+                    startService(it);
                     break;
                 case "5 Minutes":
-                   // Toast.makeText(PrankActivity.this, "5", Toast.LENGTH_SHORT).show();
-                    if(timer!=null) timer.cancel();
-                    timer = new CounterClass(300000, 1000);
-                    timer.start();
+                    it = new Intent(this, ServiceTimer.class);
+                    it.putExtra("mMillisInFuture",300000);
+                    it.putExtra("mAlarmSound", alarmSound);
+                    startService(it);
                     break;
                 case "10 Minutes":
-                    //Toast.makeText(PrankActivity.this, "10", Toast.LENGTH_SHORT).show();
-                    if(timer!=null) timer.cancel();
-                    timer = new CounterClass(600000, 1000);
-                    timer.start();
+                    it = new Intent(this, ServiceTimer.class);
+                    it.putExtra("mMillisInFuture",600000);
+                    it.putExtra("mAlarmSound", alarmSound);
+                    startService(it);
                     break;
             }
         }
         else {
-            if(timer!=null) timer.cancel();
+            unbindService(connection);
+            connection = null;
+            Intent it = new Intent(this, ServiceTimer.class);
+            stopService(it);
+
+           /* if(timer!=null) timer.cancel();
             tvTime.setText("");
             if (mpSound != null) {
                // if (mpSound.isPlaying()) {
                     mpSound.release();
                // }
-            }
+            }*/
         }
 
 
@@ -197,5 +197,55 @@ public class PrankActivity extends AppCompatActivity {
                 mpSound.release();
             //}
         }
+    }
+
+    public void startService(View view){
+        if(connection == null) {
+            connection = this;
+            bindService(new Intent(this, ServiceTimer.class), connection, Context.BIND_AUTO_CREATE); // Context.BIND_AUTO_CREATE
+            Intent it = new Intent(this, ServiceTimer.class);
+            startService(it);
+        }
+
+    }
+
+    public void stopService(View view){
+        unbindService(connection);
+        connection = null;
+        Intent it = new Intent(this, ServiceTimer.class);
+        stopService(it);
+    }
+
+    public void getTimeLeft(View view){
+        if(mTimeLeftListener!=null){
+            Toast.makeText(this, "COUNT: "+mTimeLeftListener.getTimeLeft(), Toast.LENGTH_SHORT).show();
+            tvTime.setText(mTimeLeftListener.getTimeLeft());
+        }
+    }
+
+    @Override
+    public void onServiceConnected(ComponentName componentName, IBinder service) {
+        ServiceTimer.Controller c = (ServiceTimer.Controller) service;
+        mTimeLeftListener = c.getTimeLeftListener();
+        Log.i("Script", "onServiceConnected()");
+    }
+
+    @Override
+    public void onServiceDisconnected(ComponentName componentName) {
+        Log.i("Script", "onServiceDisconnected()");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LocalBroadcastManager.getInstance(this).registerReceiver((receiver),
+                new IntentFilter(ServiceTimer.SKULL_RESULT)
+        );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
     }
 }
