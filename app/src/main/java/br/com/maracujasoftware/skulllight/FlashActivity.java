@@ -46,7 +46,7 @@ public class FlashActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     SharedPreferences preferences;
 
-    MediaPlayer soundStart,laughSound;
+    MediaPlayer laughSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -314,28 +314,12 @@ public class FlashActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                soundStart = MediaPlayer.create(FlashActivity.this, R.raw.horror_zombie);
-                soundStart.start();
-            }
-        }, 2000);
 
-    }
 
     @Override
     protected void onPause() {
         super.onPause();
 
-        if (soundStart != null) {
-                soundStart.release();
-
-        }
         if (laughSound != null) {
             if (laughSound.isPlaying()) {
                 laughSound.release();

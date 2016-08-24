@@ -56,9 +56,11 @@ public class ServiceTimer extends Service implements TimeLeftListener {
 
         broadcaster = LocalBroadcastManager.getInstance(this);
 
-        if (intent.getExtras()!=null && intent !=null){
-             alarmSound = (int)intent.getExtras().get("mAlarmSound");
+        if (intent !=null){
+            if(intent.getExtras()!=null){
+                alarmSound = (int)intent.getExtras().get("mAlarmSound");
 
+            }
         }
         setTimerThread();
         return super.onStartCommand(intent, flags, startId);

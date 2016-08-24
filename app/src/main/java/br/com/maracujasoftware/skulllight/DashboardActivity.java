@@ -3,6 +3,8 @@ package br.com.maracujasoftware.skulllight;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,8 @@ import com.google.android.gms.ads.AdView;
 
 public class DashboardActivity extends AppCompatActivity {
     private AdView adView_1;
+    MediaPlayer soundStart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +61,10 @@ public class DashboardActivity extends AppCompatActivity {
                 startActivity(i);
                 break;
             case R.id.bt_call_skullcamera:
-                i = new Intent(DashboardActivity.this, SkullCamera.class);
+                i = new Intent(this, TesteCamera.class);
                 startActivity(i);
+               /* i = new Intent(DashboardActivity.this, SkullCamera.class);
+                startActivity(i);*/
                 break;
             case R.id.bt_call_prank:
                 i = new Intent(DashboardActivity.this, PrankActivity.class);
@@ -91,5 +97,27 @@ public class DashboardActivity extends AppCompatActivity {
         adView_1.destroy();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                soundStart = MediaPlayer.create(DashboardActivity.this, R.raw.horror_zombie);
+                soundStart.start();
+            }
+        }, 2000);
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (soundStart != null) {
+            soundStart.release();
+
+        }
+
+    }
 }

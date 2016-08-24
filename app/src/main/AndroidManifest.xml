@@ -50,7 +50,8 @@
         <activity android:name=".MoreSkullActivity" />
         <activity
             android:name=".TesteCamera"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            />
 
         <!-- Appjolt -->
         <!-- Appjolt Activity -->
