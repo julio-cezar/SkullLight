@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.CountDownTimer;
@@ -36,6 +37,7 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
 
     TimeLeftListener mTimeLeftListener;
     private ServiceConnection connection;
+    Typeface murderfont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +47,9 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
         Spinner spinnerSound = (Spinner) findViewById(R.id.spinnerSounds);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.sounds_array, android.R.layout.simple_spinner_item);
+                R.array.sounds_array, R.layout.spinner_layout);
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource( R.layout.spinner_layout);
         // Apply the adapter to the spinner
         spinnerSound.setAdapter(adapter);
         spinnerSound.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -66,9 +68,9 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
         Spinner spinnerTime = (Spinner) findViewById(R.id.spinnerTime);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapterTime = ArrayAdapter.createFromResource(this,
-                R.array.times_array, android.R.layout.simple_spinner_item);
+                R.array.times_array, R.layout.spinner_layout);
         // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.spinner_layout);
         // Apply the adapter to the spinner
         spinnerTime.setAdapter(adapterTime);
         spinnerTime.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -90,9 +92,20 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
             @Override
             public void onReceive(Context context, Intent intent) {
                 String t = intent.getStringExtra(ServiceTimer.SKULL_TIMER_MESSAGE);
+
+               /* if(t=="00:00:00"){
+                    //show propaganda
+                   // Toast.makeText(PrankActivity.this, "show prop", Toast.LENGTH_SHORT).show();
+                }*/
+
                 tvTime.setText(t);
             }
         };
+
+        murderfont= Typeface.createFromAsset(getAssets(),"murderfont.otf");
+
+        TextView tvPrankDesc = (TextView) findViewById(R.id.tvPrankDesc);
+        tvPrankDesc.setTypeface(murderfont);
 
     }
 
@@ -149,25 +162,36 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
                         it.putExtra("mAlarmSound", alarmSound);
                         startService(it);
                     }
-
                     break;
                 case "3 Minutes":
-                    it = new Intent(this, ServiceTimer.class);
-                    it.putExtra("mMillisInFuture",180000);
-                    it.putExtra("mAlarmSound", alarmSound);
-                    startService(it);
+                    if(connection == null) {
+                        connection = this;
+                        bindService(new Intent(this, ServiceTimer.class), connection, Context.BIND_AUTO_CREATE); // Context.BIND_AUTO_CREATE
+                        it = new Intent(this, ServiceTimer.class);
+                        it.putExtra("mMillisInFuture",180000);
+                        it.putExtra("mAlarmSound", alarmSound);
+                        startService(it);
+                    }
                     break;
                 case "5 Minutes":
-                    it = new Intent(this, ServiceTimer.class);
-                    it.putExtra("mMillisInFuture",300000);
-                    it.putExtra("mAlarmSound", alarmSound);
-                    startService(it);
+                    if(connection == null) {
+                        connection = this;
+                        bindService(new Intent(this, ServiceTimer.class), connection, Context.BIND_AUTO_CREATE); // Context.BIND_AUTO_CREATE
+                        it = new Intent(this, ServiceTimer.class);
+                        it.putExtra("mMillisInFuture",300000);
+                        it.putExtra("mAlarmSound", alarmSound);
+                        startService(it);
+                    }
                     break;
                 case "10 Minutes":
-                    it = new Intent(this, ServiceTimer.class);
-                    it.putExtra("mMillisInFuture",600000);
-                    it.putExtra("mAlarmSound", alarmSound);
-                    startService(it);
+                    if(connection == null) {
+                        connection = this;
+                        bindService(new Intent(this, ServiceTimer.class), connection, Context.BIND_AUTO_CREATE); // Context.BIND_AUTO_CREATE
+                        it = new Intent(this, ServiceTimer.class);
+                        it.putExtra("mMillisInFuture",600000);
+                        it.putExtra("mAlarmSound", alarmSound);
+                        startService(it);
+                    }
                     break;
             }
         }
@@ -199,29 +223,6 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
         }
     }
 
-    public void startService(View view){
-        if(connection == null) {
-            connection = this;
-            bindService(new Intent(this, ServiceTimer.class), connection, Context.BIND_AUTO_CREATE); // Context.BIND_AUTO_CREATE
-            Intent it = new Intent(this, ServiceTimer.class);
-            startService(it);
-        }
-
-    }
-
-    public void stopService(View view){
-        unbindService(connection);
-        connection = null;
-        Intent it = new Intent(this, ServiceTimer.class);
-        stopService(it);
-    }
-
-    public void getTimeLeft(View view){
-        if(mTimeLeftListener!=null){
-            Toast.makeText(this, "COUNT: "+mTimeLeftListener.getTimeLeft(), Toast.LENGTH_SHORT).show();
-            tvTime.setText(mTimeLeftListener.getTimeLeft());
-        }
-    }
 
     @Override
     public void onServiceConnected(ComponentName componentName, IBinder service) {

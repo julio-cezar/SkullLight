@@ -10,19 +10,21 @@
     android:orientation="vertical"
     tools:context="br.com.maracujasoftware.skulllight.PrankActivity">
     <TextView
+        android:id="@+id/tvPrankDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/prankDescription"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:textSize="30dp"/>
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerSounds"
         android:layout_gravity="center_horizontal"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btPlay"
         android:text="Play"
@@ -30,13 +32,13 @@
         android:layout_gravity="center_horizontal"/>
 
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerTime"
         android:layout_gravity="center_horizontal"/>
 
     <ToggleButton
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/btSetAlarm"
         android:textOff="@string/setFearAlarm"
@@ -51,24 +53,4 @@
         android:textSize="60sp"
         android:layout_gravity="center_horizontal"/>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:onClick="startService" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Stop"
-        android:onClick="stopService" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Count"
-        android:onClick="getTimeLeft" />
 </LinearLayout>

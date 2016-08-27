@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="br.com.maracujasoftware.skulllight.CaveiraDashboardActivity"
-    android:background="#263238">
+    android:background="#9E9E9E">
 
     <LinearLayout
         android:id="@+id/LinearLayoutSpace"
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/LinearLayoutSpace"
-        android:background="#263238" >
+        android:background="#9E9E9E" >
 
 
     <LinearLayout

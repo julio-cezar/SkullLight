@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#263238"
+    android:background="#9E9E9E"
     tools:context="br.com.maracujasoftware.skulllight.DashboardActivity">
 
     <LinearLayout
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/LinearLayout1"
-        android:background="#263238">
+        android:background="#9E9E9E">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -97,7 +97,7 @@
                     <Button
                         android:id="@+id/bt_call_prank"
                         style="@style/style_botoes"
-                        android:background="@drawable/seletor_caveira3"
+                        android:background="@drawable/seletor_prank"
                         android:onClick="selecionarOpcao" />
 
                     <TextView

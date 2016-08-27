@@ -23,6 +23,7 @@ public class ServiceTimer extends Service implements TimeLeftListener {
     CounterClass timer;
     int  alarmSound;
     String hms;
+    int mTime;
 
     LocalBroadcastManager broadcaster;
 
@@ -59,7 +60,7 @@ public class ServiceTimer extends Service implements TimeLeftListener {
         if (intent !=null){
             if(intent.getExtras()!=null){
                 alarmSound = (int)intent.getExtras().get("mAlarmSound");
-
+                mTime = (int)intent.getExtras().get("mMillisInFuture");
             }
         }
         setTimerThread();
@@ -88,7 +89,7 @@ public class ServiceTimer extends Service implements TimeLeftListener {
     public void setTimerThread(){
         Log.i("ServiceLog", "setTimerThread()");
         if(timer!=null) timer.cancel();
-        timer = new CounterClass(9000, 1000);
+        timer = new CounterClass(mTime, 1000);
         timer.start();
     }
 
@@ -112,7 +113,9 @@ public class ServiceTimer extends Service implements TimeLeftListener {
             Log.i("ServiceLog", "CounterClass/onFinish() ");
             mpSound = MediaPlayer.create(getApplicationContext(), alarmSound);
             mpSound.start();
-           // tvTime.setText("");
+            sendResult("00:00:00");
+
+            // tvTime.setText("");
         }
     }
 
