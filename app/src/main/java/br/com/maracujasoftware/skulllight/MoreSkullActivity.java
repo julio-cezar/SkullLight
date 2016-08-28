@@ -3,6 +3,7 @@ package br.com.maracujasoftware.skulllight;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
+import android.media.MediaPlayer;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MoreSkullActivity extends AppCompatActivity {
     SurfaceHolder mHolder;
     String skull;
     //TextView tvcolor;
+    MediaPlayer soundStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,21 +179,28 @@ public class MoreSkullActivity extends AppCompatActivity {
             //colorscreenControl.setBackgroundColor(Color.BLUE);
             //tvcolor.setTextColor(Color.BLUE);
             bt_toggle_moreSkull.setBackgroundResource(R.drawable.caveira_acesa);
+            playSound(R.raw.explosion);
         }
         else if (skull.equals("skull2")) {
             //colorscreenControl.setBackgroundColor(Color.GREEN);
             //tvcolor.setTextColor(Color.GREEN);
             bt_toggle_moreSkull.setBackgroundResource(R.drawable.caveira2_acesa);
+            playSound(R.raw.big_gun);
+
         }
         else if (skull.equals("skull3")) {
             //colorscreenControl.setBackgroundColor(Color.RED);
             //tvcolor.setTextColor(Color.RED);
             bt_toggle_moreSkull.setBackgroundResource(R.drawable.caveira3_acesa);
+            playSound(R.raw.mad_laugh);
+
         }
         else if (skull.equals("skull4")) {
             //colorscreenControl.setBackgroundColor(Color.YELLOW);
             //tvcolor.setTextColor(Color.YELLOW);
             bt_toggle_moreSkull.setBackgroundResource(R.drawable.caveira4_acesa);
+            playSound(R.raw.guitar_hit);
+
         }
 
         // Set brightness to max
@@ -199,6 +208,11 @@ public class MoreSkullActivity extends AppCompatActivity {
 
         // Self awareness
         flashlightStatus = true;
+    }
+
+    private void playSound(int som) {
+        soundStart = MediaPlayer.create(this, som);
+        soundStart.start();
     }
 
     /**
@@ -243,5 +257,16 @@ public class MoreSkullActivity extends AppCompatActivity {
 
         // Self awareness
         flashlightStatus = false;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if (soundStart != null) {
+            soundStart.release();
+
+        }
+
     }
 }

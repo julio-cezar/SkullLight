@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
@@ -47,6 +49,9 @@ public class FlashActivity extends AppCompatActivity {
     SharedPreferences preferences;
 
     MediaPlayer laughSound;
+
+    AnimationDrawable skullAnimation;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +94,6 @@ public class FlashActivity extends AppCompatActivity {
                             new String[]{Manifest.permission.CAMERA}, 14);
 
                 } else {
-                    playLaughSound();
                     toggleFlashLight();
                 }
                 // Turn off the cam if it is on
@@ -115,6 +119,15 @@ public class FlashActivity extends AppCompatActivity {
                // interstitial.show();
             }
         });
+
+
+
+    }
+
+    public void startAnimation(){
+        bt_toggle_flashlight.setBackgroundResource(R.drawable.animation_skull);
+        skullAnimation  = (AnimationDrawable) bt_toggle_flashlight.getBackground();
+        skullAnimation.start();
     }
 
     /**
@@ -219,7 +232,9 @@ public class FlashActivity extends AppCompatActivity {
 
         // Set background color
         // lflashlightcontrol.setBackgroundColor(Color.WHITE);
-        bt_toggle_flashlight.setBackgroundResource(R.drawable.caveira_acesa);
+        //bt_toggle_flashlight.setBackgroundResource(R.drawable.caveira_acesa);
+        playLaughSound();
+        startAnimation();
 
         // Set brightness to max
         // setBrightness(100);
@@ -329,6 +344,13 @@ public class FlashActivity extends AppCompatActivity {
 
     private void playLaughSound() {
         laughSound = MediaPlayer.create(this, R.raw.cruel_laugh);
+        laughSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                bt_toggle_flashlight.setBackgroundResource(R.drawable.caveira_acesa);
+
+            }
+        });
         laughSound.start();
     }
 

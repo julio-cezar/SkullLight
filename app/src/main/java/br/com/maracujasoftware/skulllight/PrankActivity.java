@@ -102,12 +102,13 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
             }
         };
 
-        murderfont= Typeface.createFromAsset(getAssets(),"murderfont.otf");
+      /*  murderfont= Typeface.createFromAsset(getAssets(),"murderfont.otf");
 
         TextView tvPrankDesc = (TextView) findViewById(R.id.tvPrankDesc);
-        tvPrankDesc.setTypeface(murderfont);
+        tvPrankDesc.setTypeface(murderfont);*/
 
     }
+
 
     public void playSound(View v) {
         if (mpSound != null) {
@@ -115,18 +116,51 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
                 mpSound.release();
             }
         }
+
         switch (selectedSound) {
 
-            case "horror zombie":
+            case "Horror Zombie":
                 mpSound = MediaPlayer.create(this, R.raw.horror_zombie);
                 mpSound.start();
                 break;
-            case "mad laugh":
+            case "Cruel Laugh":
+                mpSound = MediaPlayer.create(this, R.raw.cruel_laugh);
+                mpSound.start();
+                break;
+            case "Mad Laugh":
                 mpSound = MediaPlayer.create(this, R.raw.mad_laugh);
                 mpSound.start();
                 break;
-            case "cruel laugh":
-                mpSound = MediaPlayer.create(this, R.raw.cruel_laugh);
+            case "Guitar Hit":
+                mpSound = MediaPlayer.create(this, R.raw.guitar_hit);
+                mpSound.start();
+                break;
+            case "Heartbeat":
+                mpSound = MediaPlayer.create(this, R.raw.heartbeat);
+                mpSound.start();
+                break;
+            case "Build Up":
+                mpSound = MediaPlayer.create(this, R.raw.buildup);
+                mpSound.start();
+                break;
+            case "Rain":
+                mpSound = MediaPlayer.create(this, R.raw.rain);
+                mpSound.start();
+                break;
+            case "Aura":
+                mpSound = MediaPlayer.create(this, R.raw.aura);
+                mpSound.start();
+                break;
+            case "Big Gun":
+                mpSound = MediaPlayer.create(this, R.raw.big_gun);
+                mpSound.start();
+                break;
+            case "Explosion":
+                mpSound = MediaPlayer.create(this, R.raw.explosion);
+                mpSound.start();
+                break;
+            case "Scream Skull Light":
+                mpSound = MediaPlayer.create(this, R.raw.scream_skull_light);
                 mpSound.start();
                 break;
         }
@@ -138,15 +172,38 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
         boolean checked = ((ToggleButton) v).isChecked();
         if (checked){
             switch (selectedSound) {
-
-                case "horror zombie":
+                case "Horror Zombie":
                     alarmSound =  R.raw.horror_zombie;
                     break;
-                case "mad laugh":
+                case "Cruel Laugh":
+                    alarmSound =  R.raw.cruel_laugh;
+                    break;
+                case "Mad Laugh":
                     alarmSound =  R.raw.mad_laugh;
                     break;
-                case "cruel laugh":
-                    alarmSound =  R.raw.cruel_laugh;
+                case "Build Up":
+                    alarmSound =  R.raw.buildup;
+                    break;
+                case "Guitar Hit":
+                    alarmSound =  R.raw.guitar_hit;
+                    break;
+                case "Heartbeat":
+                    alarmSound =  R.raw.heartbeat;
+                    break;
+                case "Rain":
+                    alarmSound =  R.raw.rain;
+                    break;
+                case "Aura":
+                    alarmSound =  R.raw.aura;
+                    break;
+                case "Big Gun":
+                    alarmSound =  R.raw.big_gun;
+                    break;
+                case "Explosion":
+                    alarmSound =  R.raw.explosion;
+                    break;
+                case "Scream Skull Light":
+                    alarmSound =  R.raw.scream_skull_light;
                     break;
             }
 

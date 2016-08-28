@@ -48,8 +48,7 @@
         <activity android:name=".CaveiraDashboardActivity" />
         <activity android:name=".DonationActivity" />
         <activity android:name=".MoreSkullActivity" />
-        <activity
-            android:name=".TesteCamera"
+        <activity android:name=".TesteCamera"
             android:screenOrientation="landscape"
             />
 
@@ -79,7 +78,6 @@
         </receiver>
 
         <activity android:name=".PrankActivity" />
-        <activity android:name=".SkullCamera"></activity>
 
         <service  android:name=".ServiceTimer" android:label=".ServiceTimer">
         </service>

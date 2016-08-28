@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context="br.com.maracujasoftware.skulllight.DonationActivity"
     android:orientation="vertical"
-    android:background="#9E9E9E">
+    android:background="#F5F5F5">
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/donationText" />
+        android:text="@string/donationText"
+        android:textSize="25sp"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -25,21 +26,24 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/donate1"
-        android:onClick="doar"/>
+        android:onClick="doar"
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/btProduct2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/donate2"
-        android:onClick="doar" />
+        android:onClick="doar"
+        android:textSize="20sp"/>
 
     <Button
         android:id="@+id/btProduct3"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/donate3"
-        android:onClick="doar" />
+        android:onClick="doar"
+        android:textSize="25sp"/>
 
   <!--  <Button
         android:id="@+id/bt_testecamera"

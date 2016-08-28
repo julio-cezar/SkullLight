@@ -26,9 +26,17 @@
     <string name="moreSkull">+ Skulls</string>
 
     <string-array name="sounds_array">
-        <item>horror zombie</item>
-        <item>mad laugh</item>
-        <item>cruel laugh</item>
+        <item>Horror Zombie</item>
+        <item>Cruel Laugh</item>
+        <item>Mad Laugh</item>
+        <item>Scream Skull Light</item>
+        <item>Build Up</item>
+        <item>Guitar Hit</item>
+        <item>Heartbeat</item>
+        <item>Rain</item>
+        <item>Aura</item>
+        <item>Big Gun</item>
+        <item>Explosion</item>
     </string-array>
 
     <string name="prankDescription">1.Choose a sound, 2.Choose a time for it start to play, 3.Put your device near a distracted friend and scare  him :)</string>

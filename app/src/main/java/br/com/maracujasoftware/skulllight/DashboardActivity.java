@@ -17,6 +17,7 @@ import com.google.android.gms.ads.AdView;
 public class DashboardActivity extends AppCompatActivity {
     private AdView adView_1;
     MediaPlayer soundStart;
+    boolean  jaTocou = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,10 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         adView_1.resume();
+        if (soundStart != null) {
+            soundStart.release();
+
+        }
     }
 
 
@@ -95,6 +100,10 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         adView_1.destroy();
+        if (soundStart != null) {
+            soundStart.release();
+
+        }
     }
 
     @Override
@@ -104,8 +113,11 @@ public class DashboardActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                soundStart = MediaPlayer.create(DashboardActivity.this, R.raw.horror_zombie);
-                soundStart.start();
+                if(jaTocou==false) {
+                    soundStart = MediaPlayer.create(DashboardActivity.this, R.raw.zumbi);
+                    soundStart.start();
+                    jaTocou = true;
+                }
             }
         }, 2000);
     }

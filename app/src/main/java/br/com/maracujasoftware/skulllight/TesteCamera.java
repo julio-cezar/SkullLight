@@ -1,5 +1,6 @@
 package br.com.maracujasoftware.skulllight;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
@@ -7,6 +8,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -17,6 +20,7 @@ public class TesteCamera extends AppCompatActivity {
     private CamSurface mPreview;
     MediaPlayer soundStart, soundSusto;
     Button btSusto;
+    AnimationDrawable skullAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +39,20 @@ public class TesteCamera extends AppCompatActivity {
         //ibSusto.setImageResource(R.drawable.caveira3_acesa);
        // ivSusto.setImageResource(R.drawable.juice);
 
+        /*getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);*/
 
+    }
+
+    public void startAnimation(){
+        btSusto.setBackgroundResource(R.drawable.animation_camera);
+        skullAnimation  = (AnimationDrawable) btSusto.getBackground();
+        skullAnimation.start();
     }
 
     public static Camera getCameraInstance(){
@@ -61,8 +78,9 @@ public class TesteCamera extends AppCompatActivity {
                     @Override
                     public void onCompletion(MediaPlayer mediaPlayer) {
                         btSusto.setVisibility(View.VISIBLE);
-                        soundSusto = MediaPlayer.create(TesteCamera.this, R.raw.dropped);
+                        soundSusto = MediaPlayer.create(TesteCamera.this, R.raw.scream_skull_light);
                         soundSusto.start();
+                        startAnimation();
                     }
                 });
                 soundStart.start();
