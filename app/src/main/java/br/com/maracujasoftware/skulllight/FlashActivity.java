@@ -347,7 +347,7 @@ public class FlashActivity extends AppCompatActivity {
         laughSound.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
-                bt_toggle_flashlight.setBackgroundResource(R.drawable.caveira_acesa);
+                bt_toggle_flashlight.setBackgroundResource(R.drawable.caveira_aminacao1);
 
             }
         });

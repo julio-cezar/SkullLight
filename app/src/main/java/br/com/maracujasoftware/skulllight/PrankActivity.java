@@ -25,6 +25,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 import java.util.concurrent.TimeUnit;
 
 public class PrankActivity extends AppCompatActivity implements ServiceConnection {
@@ -38,6 +41,8 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
     TimeLeftListener mTimeLeftListener;
     private ServiceConnection connection;
     Typeface murderfont;
+
+    private AdView adView_1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +111,12 @@ public class PrankActivity extends AppCompatActivity implements ServiceConnectio
 
         TextView tvPrankDesc = (TextView) findViewById(R.id.tvPrankDesc);
         tvPrankDesc.setTypeface(murderfont);*/
+
+        adView_1 = (AdView) this.findViewById(R.id.adViewPrank);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice("F0777154C5F794B0B7A1EF4120502169").build();
+        adView_1.loadAd(adRequest);
 
     }
 

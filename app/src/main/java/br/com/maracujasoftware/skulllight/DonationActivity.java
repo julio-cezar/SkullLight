@@ -212,9 +212,4 @@ public class DonationActivity extends AppCompatActivity {
         mHelper.queryInventoryAsync(mQueryInventoryFinishedListener);
     }
 
-    public void testeCam(View view){
-        Intent i;
-        i = new Intent(this, TesteCamera.class);
-        startActivity(i);
-    }
 }

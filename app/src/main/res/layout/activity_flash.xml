@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="br.com.maracujasoftware.skulllight.FlashActivity"
-    android:background="#F5F5F5">
+    android:background="#000000">
 
 
     <SurfaceView
@@ -18,18 +18,18 @@
 
        <Button
            android:id="@+id/bt_caveira_dashboard_activity"
-           android:layout_width="wrap_content"
+           android:layout_width="fill_parent"
            android:layout_height="wrap_content"
            android:layout_centerHorizontal="true"
            android:text="@string/moreSkull"
            android:onClick="callMoreSkull"
-           android:textSize="25sp"/>
-   <!-- <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/iv_skullAnim"
-        android:layout_below="@+id/bt_caveira_dashboard_activity"
-        android:onClick="startAnimation"/>-->
+           android:textSize="25sp"
+           android:layout_marginLeft="@dimen/activity_horizontal_margin"
+           android:layout_marginRight="@dimen/activity_horizontal_margin"
+           android:layout_marginBottom="@dimen/activity_horizontal_margin"
+           android:layout_marginTop="@dimen/activity_horizontal_margin"
+           android:background="@color/colorAccent"/>
+
    <Button
         android:id="@+id/bt_toggle_flashlight"
         android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:background="#F5F5F5">
+        android:background="#000000">
 
         <com.google.android.gms.ads.AdView
             android:id="@+id/adViewFlashlight"
