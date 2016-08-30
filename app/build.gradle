@@ -5,10 +5,10 @@ android {
     buildToolsVersion "24.0.0"
     defaultConfig {
         applicationId "br.com.maracujasoftware.skulllight"
-        minSdkVersion 23
+        minSdkVersion 9
         targetSdkVersion 24
-        versionCode 14
-        versionName '2.0'
+        versionCode 15
+        versionName '2.1'
     }
     buildTypes {
         release {
