@@ -6,9 +6,12 @@ import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
@@ -24,6 +27,10 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         if (ContextCompat.checkSelfPermission(DashboardActivity.this,
         Manifest.permission.CAMERA)
@@ -50,30 +57,33 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
         Appjolt.addUserSegment(this, "Buyer");*/
-
-
     }
 
     public void selecionarOpcao(View view) {
         Intent i;
+        ActivityOptionsCompat activityOptions;
         switch (view.getId()) {
             case R.id.bt_flash:
                 i = new Intent(DashboardActivity.this, FlashActivity.class);
-                startActivity(i);
+                //startActivity(i);
+                 activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                ActivityCompat.startActivity(this,i, activityOptions.toBundle());
                 break;
             case R.id.bt_call_skullcamera:
                 i = new Intent(this, TesteCamera.class);
                 startActivity(i);
-               /* i = new Intent(DashboardActivity.this, SkullCamera.class);
-                startActivity(i);*/
                 break;
             case R.id.bt_call_prank:
                 i = new Intent(DashboardActivity.this, PrankActivity.class);
-                startActivity(i);
+                //startActivity(i);
+                activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                ActivityCompat.startActivity(this,i, activityOptions.toBundle());
                 break;
             case R.id.bt_doacao:
                 i = new Intent(DashboardActivity.this, DonationActivity.class);
-                startActivity(i);
+                //startActivity(i);
+                activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this);
+                ActivityCompat.startActivity(this,i, activityOptions.toBundle());
                 break;
         }
     }

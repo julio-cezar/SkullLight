@@ -37,7 +37,7 @@
         android:layout_above="@+id/propaganda"
         android:layout_centerHorizontal="true"
        android:background="@drawable/caveira_apagada"
-       android:layout_below="@+id/bt_caveira_dashboard_activity" />
+       android:layout_below="@+id/bt_caveira_dashboard_activity"/>
 
 <!--    <android.support.design.widget.FloatingActionButton
         app:fabSize="normal"
