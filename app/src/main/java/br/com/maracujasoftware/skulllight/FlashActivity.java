@@ -33,7 +33,7 @@ import java.io.IOException;
 
 public class FlashActivity extends AppCompatActivity {
 
-    Integer oriBrightnessValue;
+    //Integer oriBrightnessValue;
     Boolean flashlightStatus = false; // false = off, true = on
     Camera mCamera = null;
     Camera.Parameters parameters;
@@ -61,13 +61,13 @@ public class FlashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Retrieve the brightness value for future use
-        try {
+       /* try {
             oriBrightnessValue = android.provider.Settings.System.getInt(
                     getContentResolver(),
                     android.provider.Settings.System.SCREEN_BRIGHTNESS);
         } catch (Settings.SettingNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
 
         setContentView(R.layout.activity_flash);
 
@@ -139,7 +139,7 @@ public class FlashActivity extends AppCompatActivity {
         super.onStop();
 
         // Revert to original brightness
-        setBrightness(oriBrightnessValue);
+       // setBrightness(oriBrightnessValue);
 
         // Turn off the flashlight if api level < 14 as leaving it on would
         // result in a FC

@@ -7,8 +7,8 @@ android {
         applicationId "br.com.maracujasoftware.skulllight"
         minSdkVersion 9
         targetSdkVersion 24
-        versionCode 16
-        versionName '2.2'
+        versionCode 17
+        versionName '2.3'
     }
     buildTypes {
         release {

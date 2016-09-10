@@ -154,9 +154,9 @@ public class DonationActivity extends AppCompatActivity {
         adView_1.destroy();
 
         if(mHelper != null){
-            mHelper.dispose();
+           // mHelper.dispose();
+            mHelper = null;
         }
-        mHelper = null;
         ((MyApplication) getApplication()).setmHelper(null);
     }
 
