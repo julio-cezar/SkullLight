@@ -90,7 +90,7 @@ public class ServiceTimer extends Service implements TimeLeftListener {
         Log.i("ServiceLog", "setTimerThread()");
         if(timer!=null) timer.cancel();
         timer = new CounterClass(mTime, 1000);
-        timer.start();
+         timer.start();
     }
 
     public class CounterClass extends CountDownTimer {
